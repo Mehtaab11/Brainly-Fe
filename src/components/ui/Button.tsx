@@ -12,7 +12,7 @@ interface buttonProps {
 const Button = (props: buttonProps) => {
   return <button></button>;
 };
-
+ 
 export default Button;
 
 {/* <Button variant="primary" />; */}
