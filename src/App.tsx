@@ -1,12 +1,18 @@
-
 import Button from "./components/ui/Button";
+import PlusIcon from "./icons/PlusIcon";
 
 function App() {
   return (
     <>
-      <Button variant="primary" text="Click Me" onClick={() => {}} />{" "}
-      <Button variant="secondary" text="Click Me" onClick={() => {}} />{" "}
-        <h1>Hello</h1>
+      <Button size="md" variant="primary" text="Click Me" onClick={() => {}} />{" "}
+      <Button
+        startIcon={<PlusIcon size={6} />}
+        size="md"
+        variant="secondary"
+        text="Add Content"
+        onClick={() => {}}
+      />{" "}
+      <h1 className="text-purple-600">Hello</h1>
     </>
   );
 }
