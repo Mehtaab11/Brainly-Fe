@@ -1,11 +1,14 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+
 import Button from "./components/ui/Button";
 
 function App() {
-  return <Button />;
+  return (
+    <>
+      <Button variant="primary" text="Click Me" onClick={() => {}} />{" "}
+      <Button variant="secondary" text="Click Me" onClick={() => {}} />{" "}
+        <h1>Hello</h1>
+    </>
+  );
 }
 
 export default App;

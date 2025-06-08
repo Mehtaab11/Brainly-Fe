@@ -8,11 +8,22 @@ interface buttonProps {
   text: string;
   onClick: () => void;
 }
+const variantStyles = {
+  primary: "bg-blue-500 text-white hover:bg-blue-600 px-4 py-2 rounded-md",
+  secondary: "bg-gray-500 text-white hover:bg-gray-600",
+};
 
 const Button = (props: buttonProps) => {
-  return <button></button>;
+  return (
+    <>
+      {" "}
+      <button className={variantStyles[props.variant]}>{props.text}</button>
+    </>
+  );
 };
- 
+
 export default Button;
 
-{/* <Button variant="primary" />; */}
+{
+  /* <Button variant="primary" />; */
+}
