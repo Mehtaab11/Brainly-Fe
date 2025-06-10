@@ -6,7 +6,7 @@ interface buttonProps {
   startIcon?: ReactElement;
   //   size: "md" | "lg" | "sm";
   //   endIcon?: ReactElement;
-  //   onClick: () => void;
+  onClick?: () => void;
 }
 const variantStyles = {
   primary: "bg-purple-600 text-white",
@@ -19,13 +19,14 @@ const variantStyles = {
 //   sm: "px-2 py-1",
 // };
 
-const defaultStyles = " font-medium px-4 py-2 rounded-md flex";
+const defaultStyles = " cursor-pointer font-medium px-4 py-2 rounded-md flex";
 
 const Button = (props: buttonProps) => {
   return (
     <>
       {" "}
       <button
+        onClick={props.onClick}
         className={`${variantStyles[props.variant]} ${defaultStyles}
         }`}
       >
