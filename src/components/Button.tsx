@@ -19,7 +19,7 @@ const variantStyles = {
 //   sm: "px-2 py-1",
 // };
 
-const defaultStyles = " font-light px-4 py-2 rounded-md flex";
+const defaultStyles = " font-medium px-4 py-2 rounded-md flex";
 
 const Button = (props: buttonProps) => {
   return (
