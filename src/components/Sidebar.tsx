@@ -6,11 +6,11 @@ import SidebarItem from "./SidebarItem";
 const Sidebar = () => {
   return (
     <div className=" bg-white w-72 border-r border-slate-300 h-screen fixed top-0 left-0">
-      <div className="flex items-center justify-between px-6 pt-12 pb-6 h-16">
-        <h1 className="text-2xl text-purple-900 font-semibold "> Brainly</h1>
-        <div className="text-purple-700">
+      <div className="flex items-center justify-start gap-4 px-6 pt-12 pb-6 h-16">
+        <div className="text-black">
           <BrainIcon size="xl" />
         </div>
+        <h1 className="text-2xl text-black font-semibold "> Brainly</h1>
       </div>
 
       <div className="pt-4">
