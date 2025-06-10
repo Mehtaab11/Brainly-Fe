@@ -1,5 +1,5 @@
 export interface IconProps {
-  size: "md" | "lg" | "sm" | "base";
+  size: "md" | "lg" | "sm" | "base" | "xl";
 }
 
 export const IconSizeVariant = {
@@ -7,4 +7,5 @@ export const IconSizeVariant = {
   lg: "size-8",
   sm: "size-4",
   base: "size-5",
+  xl: "size-12",
 };
