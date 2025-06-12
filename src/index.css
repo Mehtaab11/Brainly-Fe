@@ -8,3 +8,13 @@
   --color-gray-200: #e6e9e8;
   --color-gray-600: #95989c;
 }
+
+/* styles.css or global.css */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+

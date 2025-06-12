@@ -11,15 +11,15 @@ enum ContentType {
 }
 
 const CreateContentModal = ({ open, onClose }) => {
-  const linkRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
+  const linkRef = useRef<HTMLInputElement>(null);
   const [type, setType] = useState(ContentType.YOUTUBE);
 
   const addContent = async () => {
     const link = linkRef.current?.value;
-    const title = titleRef.current?.value;
+    const contentTitle = titleRef.current?.value;
     const contentType: ContentType = type;
-    if (!link || !title || !contentType) {
+    if (!link || !contentTitle || !contentType) {
       alert("Please fill in all fields");
       return;
     }
@@ -30,13 +30,24 @@ const CreateContentModal = ({ open, onClose }) => {
       alert("You are not logged in");
       return;
     }
+    console.log(
+      "link:",
+      link,
+      "title:",
+      contentTitle,
+      "contentType:",
+      contentType,
+      "token:",
+      token
+    );
+    // Make sure to handle the case where the token is not available
 
     axios.post(
       BACKEND_URL + "/api/v1/content",
       {
-        link,
-        title,
-        contentType,
+        title: contentTitle,
+        link: link,
+        type: contentType,
       },
       {
         headers: {
@@ -69,8 +80,16 @@ const CreateContentModal = ({ open, onClose }) => {
                 </div>
               </div>
               <div>
-                <Input label="Link" referance={linkRef} placeholder="Add Link" />
-                <Input label="Title" referance={titleRef} placeholder="Add title" />
+                <Input
+                  label="Title"
+                  referance={titleRef}
+                  placeholder="Add title"
+                />
+                <Input
+                  label="Link"
+                  referance={linkRef}
+                  placeholder="Add Link"
+                />
                 {/* <Input referance={typeRef} placeholder="Add Type" /> */}
                 {/* <Input /> */}
               </div>
@@ -95,7 +114,7 @@ const CreateContentModal = ({ open, onClose }) => {
             </span>
           </div>
         </>
-      )}s
+      )}
     </div>
   );
 };

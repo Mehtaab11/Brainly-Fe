@@ -5,9 +5,14 @@ import CreateContentModal from "../components/CreateContentModal";
 import PlusIcon from "../icons/PlusIcon";
 import ShareIcon from "../icons/ShareIcon";
 import Sidebar from "../components/Sidebar";
+import useContent from "../hooks/useContent";
 
 const Dashboard = () => {
   const [modalOpen, setModalOpen] = useState(false);
+
+  const content = useContent();
+  console.log("Content in Dashboard:", content);
+
   return (
     <div>
       <Sidebar />
@@ -37,17 +42,19 @@ const Dashboard = () => {
             text="Share Brain"
           />
         </div>
-        <div className="flex gap-4 mt-4">
-          <Card
-            type="youtube"
-            title="First Video"
-            link="https://www.youtube.com/watch?v=JgDNFQ2RaLQ"
-          />
-          <Card
-            type="twitter"
-            title="First Tweet"
-            link="https://x.com/Wisdom_HQ/status/1932062870159999449"
-          />
+        <div className="flex overflow-x-scroll scrollbar-hide gap-4 mt-4">
+          { content ? content.map((item) => (
+            <Card
+              key={item.id}
+              type={item.type}
+              title={item.title}
+              link={item.link}
+            />
+          )) : (
+            <p>No content available</p>
+          )}
+
+          {/* Example Cards */}
         </div>
       </div>
     </div>
