@@ -8,6 +8,7 @@ const Signup = () => {
   const userNameRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
   const navigate = useNavigate();
+  
   async function signup(e: React.FormEvent) {
     e.preventDefault();
     const username = userNameRef.current?.value;
