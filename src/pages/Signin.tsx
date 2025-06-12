@@ -1,11 +1,13 @@
 import axios from "axios";
 import Input from "../components/Input";
 import { BACKEND_URL } from "../config";
-import {  useRef } from "react";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const userNameRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
+  const navigate = useNavigate();
 
   async function signin(e: React.FormEvent) {
     e.preventDefault();
@@ -21,7 +23,8 @@ const SignIn = () => {
     const jwt = response.data.token;
 
     localStorage.setItem("token", jwt);
-    alert("You are now signed up");
+    navigate("/dashboard");
+    alert("You are now signed in");
   }
 
   return (
