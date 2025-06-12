@@ -14,10 +14,10 @@ const Dashboard = () => {
 
       <div className="p-4 ml-72 min-h-screen bg-gray-100">
         <CreateContentModal
+          open={modalOpen}
           onClose={() => {
             setModalOpen(false);
           }}
-          open={modalOpen}
         />
 
         <div className="flex items-center justify-end gap-4">
