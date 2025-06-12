@@ -13,14 +13,13 @@ enum ContentType {
 const CreateContentModal = ({ open, onClose }) => {
   const linkRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
-  const typeRef = useRef<HTMLInputElement>(null);
   const [type, setType] = useState(ContentType.YOUTUBE);
 
   const addContent = async () => {
     const link = linkRef.current?.value;
     const title = titleRef.current?.value;
-
-    if (!link || !title || !type) {
+    const contentType: ContentType = type;
+    if (!link || !title || !contentType) {
       alert("Please fill in all fields");
       return;
     }
@@ -37,7 +36,7 @@ const CreateContentModal = ({ open, onClose }) => {
       {
         link,
         title,
-        type,
+        contentType,
       },
       {
         headers: {
@@ -51,15 +50,17 @@ const CreateContentModal = ({ open, onClose }) => {
   };
 
   return (
-    <div>
+    <div className="h-full w-full">
       {open && (
-        <div
-          onClick={onClose}
-          className="fixed h-screen w-screen top-0 left-0 flex items-center justify-center bg-slate-500 opacity-60"
-        >
+        <>
+          {" "}
+          <div
+            onClick={onClose}
+            className="fixed h-screen w-screen top-0 left-0 flex items-center justify-center bg-slate-500 opacity-60"
+          ></div>
           <div
             onClick={(e) => e.stopPropagation()}
-            className="flex flex-col justify-center"
+            className="flex fixed top-[30%] left-[45%] flex-col justify-center"
           >
             <span className="bg-white opacity-100 p-4 rounded">
               <div className="flex justify-end">
@@ -68,14 +69,24 @@ const CreateContentModal = ({ open, onClose }) => {
                 </div>
               </div>
               <div>
-                <Input referance={linkRef} placeholder="Add Link" />
-                <Input referance={titleRef} placeholder="Add title" />
+                <Input label="Link" referance={linkRef} placeholder="Add Link" />
+                <Input label="Title" referance={titleRef} placeholder="Add title" />
                 {/* <Input referance={typeRef} placeholder="Add Type" /> */}
                 {/* <Input /> */}
               </div>
               <div className="flex my-4 justify-center gap-4 mt-4">
-                <Button size="sm"  onClick={() => setType(ContentType.YOUTUBE)} variant={type === ContentType.YOUTUBE ? "selected" : "hollow"} text="YouTube" />
-                <Button size="sm" onClick={() => setType(ContentType.TWITTER)} variant={type === ContentType.TWITTER ? "selected" : "hollow"} text="Twitter" />
+                <Button
+                  size="sm"
+                  onClick={() => setType(ContentType.YOUTUBE)}
+                  variant={type === ContentType.YOUTUBE ? "selected" : "hollow"}
+                  text="YouTube"
+                />
+                <Button
+                  size="sm"
+                  onClick={() => setType(ContentType.TWITTER)}
+                  variant={type === ContentType.TWITTER ? "selected" : "hollow"}
+                  text="Twitter"
+                />
               </div>
               <div className="flex justify-center ">
                 {" "}
@@ -83,8 +94,8 @@ const CreateContentModal = ({ open, onClose }) => {
               </div>{" "}
             </span>
           </div>
-        </div>
-      )}
+        </>
+      )}s
     </div>
   );
 };
