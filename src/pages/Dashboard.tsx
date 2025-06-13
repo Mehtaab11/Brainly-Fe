@@ -27,8 +27,15 @@ const Dashboard = () => {
     );
     console.log("Response from shareBrain:", response.data);
     const shareUrl = response.data.link;
-    alert(`Brain shared successfully! Share this URL: ${shareUrl}`);
-    
+
+    navigator.clipboard
+      .writeText(shareUrl)
+      .then(() => {
+        alert("copied to clipboard");
+      })
+      .catch((err) => {
+        console.log(err);
+      }); 
   }
 
   return (
